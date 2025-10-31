@@ -7,13 +7,19 @@ const htmlPlugin = new HtmlWebPackPlugin({
   filename: "./index.html",
 });
 module.exports = {
-  mode: "development",
+  mode: "production",
+  entry: "./src/index.js",
   devServer: {
     static: path.join(__dirname, "dist"),
     port: 3001,
     historyApiFallback: {
       index: "/public/index.html",
     },
+  },
+  output: {
+    path: path.join(__dirname, "dist"),
+    filename: "bundle.js",
+    publicPath: "auto",
   },
   module: {
     rules: [
